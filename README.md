@@ -21,3 +21,28 @@ ng g cl models/customer
 ```shell
 ng g module app-routing
 ```
+###   Install Angular Material, Angular CDK and Angular Animations, Flex and FlexLayout
++ Istall angular material
+```shell
+npm install --save @angular/material
+```
++ Install angular cdk
+```shell
+npm install --save @angular/cdk
+```
++ Install angular animations
+```shell
+npm install --save @angular/animations
+```
++ Install angular hammer
+```shell
+npm install --save hammerjs
+```
++ Install Flex
+```shell
+npm install angular-flex --save
+```
++ Install flex layout
+```shell
+npm install --save @angular/flex-layout@latest
+```
