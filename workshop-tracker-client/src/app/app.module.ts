@@ -7,6 +7,8 @@ import { CustomerComponent } from './components/customer/customer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatButtonToggleModule, MatCardModule, MatDialogModule, MatExpansionModule, MatGridListModule, MatIconModule, MatInputModule, MatNativeDateModule, MatPaginatorModule, MatProgressBarModule, MatProgressSpinnerModule, MatSelectModule, MatSidenavModule, MatSliderModule, MatSlideToggleModule, MatSnackBarModule, MatTabsModule, MatToolbarModule, MatTooltipModule } from '@angular/material';
 import { FlexLayoutModule, FlexModule } from '@angular/flex-layout';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClient, HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +39,8 @@ import { FlexLayoutModule, FlexModule } from '@angular/flex-layout';
     MatTooltipModule,
     FlexLayoutModule,
     FlexModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
