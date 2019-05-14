@@ -13,7 +13,7 @@ export class CustomerService {
   constructor(private http: HttpClient) { }
 
   formCustomer: FormGroup = new FormGroup({
-    id: new FormControl(0),
+    id: new FormControl(null),
     name: new FormControl('', Validators.required),
     lastName: new FormControl('', Validators.required),
     email: new FormControl('', Validators.email),
@@ -23,7 +23,7 @@ export class CustomerService {
 
   initializeFormGroup() {
     this.formCustomer.setValue({
-      id: 0,
+      id: null,
       name: '',
       lastName: '',
       email: '',
@@ -32,19 +32,24 @@ export class CustomerService {
     });
   }
 
-  getCustomer() {
-    return this.customer;
+  getCustomer(idCustomer): Observable<Customer> {
+    return this.http.get<Customer>(baseURL + 'customers/customer/' + { idCustomer });
   }
 
   insertCustomer(customer: Customer): Observable<String> {
     return this.http.post<String>(baseURL + 'customers/add', customer);
   }
-  
-  getListCustomers(): Observable<Customer[]>{
+
+  getListCustomers(): Observable<Customer[]> {
     return this.http.get<Customer[]>(baseURL + 'customers');
   }
 
-  onEdit(idCustomer){
+  updateCustomer(updCustomer): Observable<string> {
+    console.log(updCustomer);
+    return this.http.put<string>(baseURL + 'customers/update/' + updCustomer.id, updCustomer);
+  }
 
+  setValueFormCustomer(customer) {
+    this.formCustomer.setValue(customer);
   }
 }

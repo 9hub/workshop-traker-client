@@ -48,6 +48,9 @@ import { CustomersComponent } from './components/customers/customers.component';
     MatTableModule
   ],
   providers: [],
+  entryComponents: [
+    CustomerComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

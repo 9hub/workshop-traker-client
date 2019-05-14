@@ -1,6 +1,11 @@
-<app-customers></app-customers>
-
 <div class="mat-elevation-z8">
+  <mat-toolbar fxLayout="row" mat-dialog-title="primary" color="primary">
+    <div fxFlex>Encuestado</div>
+    <span fxFlex class="flex-spacer"></span>
+    <div fxFlex align="end">
+      <button mat-button mat-dialog-close>&times;</button>
+    </div>
+  </mat-toolbar>
   <form [formGroup]="customerService.formCustomer" class="normal-form" (submit)="onSubmit()">
     <mat-grid-list cols="2" rowHeight="300px">
       <mat-grid-tile>

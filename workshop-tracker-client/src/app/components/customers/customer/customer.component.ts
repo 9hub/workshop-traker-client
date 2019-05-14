@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CustomerService } from 'src/app/services/customer.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { Customer } from 'src/app/models/customer';
+import { MatDialogRef } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-customer',
@@ -12,7 +14,9 @@ export class CustomerComponent implements OnInit {
   customer: Customer;
 
   constructor(private customerService: CustomerService,
-    private notificationService: NotificationService) { }
+    private notificationService: NotificationService,
+    public dialogRef: MatDialogRef<CustomerComponent>,
+    private router: Router) { }
 
   ngOnInit() {
   }
@@ -25,20 +29,35 @@ export class CustomerComponent implements OnInit {
   onSubmit() {
     if (this.customerService.formCustomer.valid) {
       this.customer = this.customerService.formCustomer.value;
-      this.customerService.insertCustomer(this.customer).subscribe(
-        data => {
-          console.log(data);
-          this.notificationService.success('Customer Successfully');
-          this.customerService.formCustomer.reset();
-        }),
-        error => {
-          this.notificationService.warn('Error');
-        };
+      if (!this.customer.id) {
+        this.customerService.insertCustomer(this.customer).subscribe(
+          data => {
+            this.notificationService.success('Customer Successfully');
+          }),
+          error => {
+            this.notificationService.warn('Error');
+          };
+      } else {
+        this.customerService.updateCustomer(this.customer)
+          .subscribe(
+            resp => {
+              this.notificationService.success('Customer Update');
+            }),
+          error => {
+            this.notificationService.warn('Error');
+          };
+
+      }
+      this.customerService.formCustomer.reset();
+      this.customerService.initializeFormGroup();
+      this.onClose();
+
     }
+    this.router.navigate(['list-customer']);
   }
   onClose() {
     this.customerService.formCustomer.reset();
     this.customerService.initializeFormGroup();
-    ///this.dia
+    this.dialogRef.close();
   }
 }

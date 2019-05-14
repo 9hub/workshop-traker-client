@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import { MatTableDataSource, MatSort, MatPaginator, MatDialog, MatDialogConfig } from '@angular/material';
 import { CustomerService } from 'src/app/services/customer.service';
+import { CustomerComponent } from '../customer/customer.component';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-list-customer',
@@ -14,7 +16,9 @@ export class ListCustomerComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private customerService: CustomerService) {
+  constructor(private customerService: CustomerService,
+    private dialog: MatDialog,
+    private notificationService: NotificationService) {
   }
 
   ngOnInit() {
@@ -26,5 +30,22 @@ export class ListCustomerComponent implements OnInit {
         this.listData.paginator = this.paginator;
       });
   }
+  onEditCustomer(rowCustomer) {
+    console.log(rowCustomer);
+    this.customerService.setValueFormCustomer(rowCustomer);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "60%";
+    this.dialog.open(CustomerComponent, dialogConfig);
+  }
 
+  onCreate() {
+    this.customerService.initializeFormGroup();
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "60%";
+    this.dialog.open(CustomerComponent,dialogConfig);
+  }
 }
