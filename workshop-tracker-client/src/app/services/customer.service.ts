@@ -37,7 +37,14 @@ export class CustomerService {
   }
 
   insertCustomer(customer: Customer): Observable<String> {
-    console.log(customer);
     return this.http.post<String>(baseURL + 'customers/add', customer);
+  }
+  
+  getListCustomers(): Observable<Customer[]>{
+    return this.http.get<Customer[]>(baseURL + 'customers');
+  }
+
+  onEdit(idCustomer){
+
   }
 }

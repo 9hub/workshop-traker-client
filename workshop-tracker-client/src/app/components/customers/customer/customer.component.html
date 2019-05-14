@@ -1,10 +1,5 @@
-<div class="container">
-  <mat-toolbar>
-    <span class="fill-remaining-space"></span>
-    <span>Curstomer</span>
-    <span class="fill-remaining-space"></span>
-  </mat-toolbar>
-</div>
+<app-customers></app-customers>
+
 <div class="mat-elevation-z8">
   <form [formGroup]="customerService.formCustomer" class="normal-form" (submit)="onSubmit()">
     <mat-grid-list cols="2" rowHeight="300px">
