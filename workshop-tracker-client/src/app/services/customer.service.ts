@@ -36,8 +36,8 @@ export class CustomerService {
     return this.http.get<Customer>(baseURL + 'customers/customer/' + { idCustomer });
   }
 
-  insertCustomer(customer: Customer): Observable<String> {
-    return this.http.post<String>(baseURL + 'customers/add', customer);
+  insertCustomer(customer: Customer): Observable<string> {
+    return this.http.post<string>(baseURL + 'customers/', customer);
   }
 
   getListCustomers(): Observable<Customer[]> {
@@ -46,7 +46,7 @@ export class CustomerService {
 
   updateCustomer(updCustomer): Observable<string> {
     console.log(updCustomer);
-    return this.http.put<string>(baseURL + 'customers/update/' + updCustomer.id, updCustomer);
+    return this.http.put<string>(baseURL + 'customers/' + updCustomer.id, updCustomer);
   }
 
   setValueFormCustomer(customer) {
