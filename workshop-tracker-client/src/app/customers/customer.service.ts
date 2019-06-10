@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Customer } from '../models/customer';
 import { HttpClient } from '@angular/common/http';
-import { baseURL } from '../models/baseurl';
 import { Observable } from 'rxjs';
+import { baseURL } from 'src/app/const/baseurl';
+import { Customer } from './customer';
 
 @Injectable({
   providedIn: 'root'

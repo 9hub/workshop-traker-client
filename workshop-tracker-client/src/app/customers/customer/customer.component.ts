@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomerService } from 'src/app/services/customer.service';
+import { CustomerService } from 'src/app/customers/customer.service';
 import { NotificationService } from 'src/app/services/notification.service';
-import { Customer } from 'src/app/models/customer';
+import { Customer } from 'src/app/customers/customer';
 import { MatDialogRef } from '@angular/material';
 import { Router } from '@angular/router';
 

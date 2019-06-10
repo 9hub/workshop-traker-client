@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatSort, MatPaginator, MatDialog, MatDialogConfig } from '@angular/material';
-import { CustomerService } from 'src/app/services/customer.service';
 import { CustomerComponent } from '../customer/customer.component';
+import { CustomerService } from '../customer.service';
 import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
